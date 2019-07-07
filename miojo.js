@@ -10,6 +10,7 @@ form.addEventListener('input', function () {
 	t1 = parseInt(tempo1.value);
 	t2 = parseInt(tempo2.value);
 	
+	// Tendo certeza que input faz sentido
 	if (isNaN(t1) || isNaN(t2) || isNaN(m)) {
 		test = "Insira número de minutos em todos";
 	} else if (t1 < 0 || t2 < 0 || m < 0) {
@@ -31,14 +32,26 @@ function findMin(m, t1, t2) {
 	let b = 1;
 	let c = 0; // Se a/b for mais que 50, aumenta
 	
-	// Iterar até achar solucao ou a/b == 50 
+	// Iterar até achar solucao ou a/b == 50
+	/* 
+	Checando o caso de Ambulhada 1 virada 
+	a vezes mais tempo do miojo sendo o
+	mesmo que Ambulhada 2 virada b vezes.
+	*/
 	while (t1*a + m != t2*b && a < 51 && b < 51) {
-		
+		/* 
+		Se Ambulhada 1 virada a vezes menos o 
+		tempo do miojo já é maior que a 
+		Ambulhada 2 virada b vezes, vire A2 de novo
+		Se nao, vire A1 de novo.
+		*/
 		if (t1*a - m > t2*b) {
 			b += 1;
 		} else {
 			a += 1;
 		}
+		
+		// Salvar a resposta se já bateu
 		if (t1*a + m == t2*b) { r1 = t2*b; }
 		if (t1*a - m == t2*b) { r1 = t1*a; }
 	}
@@ -47,18 +60,28 @@ function findMin(m, t1, t2) {
 	a=1;
 	b=1;
 	// Iterar até achar solucao ou a/b == 50 
+	/* 
+	Checando o caso de Ambulhada 1 virada 
+	a vezes menos tempo do miojo sendo o 
+	mesmo que Ambulhada 2 virada b vezes.
+	*/
 	while (t1*a - m != t2*b && a < 51 && b < 51) {
+		
+		/* 
+		Se Ambulhada 1 virada a vezes menos o 
+		tempo do miojo já é maior que a 
+		Ambulhada 2 virada b vezes, vire A2 de novo
+		Se nao, vire A1 de novo.
+		*/
 		if (t1*a - m > t2*b) {
 			b += 1;
 		} else {
 			a += 1;
 		}
-		if (t1*a + m == t2*b) {
-			r2 = t2*b;
-		}
-		if (t1*a - m == t2*b) {
-			r2 = t1*a;
-		}
+		
+		// Salvar a resposta se já bateu
+		if (t1*a + m == t2*b) { r2 = t2*b; }
+		if (t1*a - m == t2*b) { r2 = t1*a; }
 	}
 	if (a == 50 || b == 50) c += 1;
 	
