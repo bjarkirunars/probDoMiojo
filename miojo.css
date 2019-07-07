@@ -1,0 +1,19 @@
+html {
+	text-align: center;
+}
+
+input {
+	border: none;
+	border-bottom: 1px solid black;
+	width: 100px;
+	margin-right: 20px;
+}
+
+.resp {
+	padding-top: 20px;
+}
+
+form {
+	padding-top: 20px;
+}
+
