@@ -11,32 +11,43 @@ form.addEventListener('input', function () {
 	t2 = parseInt(tempo2.value);
 	
 	if (isNaN(t1) || isNaN(t2) || isNaN(m)) {
-		test = 0;
+		test = "Insira número de minutos em todos";
+	} else if (t1 < 0 || t2 < 0 || m < 0) {
+		test = "Tempo tem que ser positivo";
+	} else if (t1 < m || t2 < m) {
+		test = "Ambulhadas devem ser maiores que o tempo do miojo";
+	} else if (t1 == m || t2 == m) {
+		test = m + " minutos";
 	} else {
-		test = findMin(m, t1, t2);
+		test = findMin(m, t1, t2)  + " minutos";
 	}
 
 	resposta.innerHTML = test;
 })
 
+// Achar o tempo mínimo se existe
 function findMin(m, t1, t2) {
 	let a = 1;
 	let b = 1;
-	while (t1*a + m != t2*b) {
+	let c = 0; // Se a/b for mais que 50, aumenta
+	
+	// Iterar até achar solucao ou a/b == 50 
+	while (t1*a + m != t2*b && a < 51 && b < 51) {
 		
 		if (t1*a - m > t2*b) {
 			b += 1;
 		} else {
 			a += 1;
 		}
-		
 		if (t1*a + m == t2*b) { r1 = t2*b; }
-		if (t1*a - m == t2*b) { r1 = t1*a; }	
+		if (t1*a - m == t2*b) { r1 = t1*a; }
 	}
+	if (a == 50 || b == 50) c += 1;
+
 	a=1;
 	b=1;
-	
-	while (t1*a - m != t2*b) {
+	// Iterar até achar solucao ou a/b == 50 
+	while (t1*a - m != t2*b && a < 51 && b < 51) {
 		if (t1*a - m > t2*b) {
 			b += 1;
 		} else {
@@ -49,6 +60,9 @@ function findMin(m, t1, t2) {
 			r2 = t1*a;
 		}
 	}
+	if (a == 50 || b == 50) c += 1;
 	
+	// Devolver a melhor solucao
+	if (c == 2) return "Solucao nao existe";
 	return Math.min(r1,r2);
 }
