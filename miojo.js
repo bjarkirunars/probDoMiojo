@@ -16,7 +16,7 @@ form.addEventListener('input', function () {
 		test = findMin(m, t1, t2);
 	}
 
-	resposta.value = test;
+	resposta.innerHTML = test;
 })
 
 function findMin(m, t1, t2) {
