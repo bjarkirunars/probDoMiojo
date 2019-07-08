@@ -88,6 +88,6 @@ function findMin(m, t1, t2) {
 	if (a == 50 || b == 50) c += 1;
 	
 	// Devolver a melhor solucao
-	if (c == 2) return "Solucao nao existe";
+	if (c == 2) return "Solução inexistente";
 	return Math.min(r1,r2);
 }
