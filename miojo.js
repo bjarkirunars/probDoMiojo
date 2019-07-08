@@ -12,14 +12,16 @@ form.addEventListener('input', function () {
 	
 	// Tendo certeza que input faz sentido
 	if (isNaN(t1) || isNaN(t2) || isNaN(m)) {
-		test = "Insira número de minutos em todos";
+		test = "Por favor insira o número de minutos em todos os campos";
 	} else if (t1 < 0 || t2 < 0 || m < 0) {
 		test = "Tempo tem que ser positivo";
 	} else if (t1 < m || t2 < m) {
-		test = "Ambulhadas devem ser maiores que o tempo do miojo";
+		test = "Ambulhadas devem ter mais tempo do que o miojo";
 	} else if (t1 == m || t2 == m) {
 		test = m + " minutos";
-	} else {
+	} else if (t1 == t2){
+		test = "Solução inexistente";
+	}else {
 		test = findMin(m, t1, t2)  + " minutos";
 	}
 
