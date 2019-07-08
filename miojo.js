@@ -21,8 +21,8 @@ form.addEventListener('input', function () {
 		test = m + " minutos";
 	} else if (t1 == t2){
 		test = "Solução inexistente";
-	}else {
-		test = findMin(m, t1, t2)  + " minutos";
+	} else {
+		test = findMin(m, t1, t2);
 	}
 
 	resposta.innerHTML = test;
@@ -89,5 +89,5 @@ function findMin(m, t1, t2) {
 	
 	// Devolver a melhor solucao
 	if (c == 2) return "Solução inexistente";
-	return Math.min(r1,r2);
+	return Math.min(r1,r2)   + " minutos";
 }
